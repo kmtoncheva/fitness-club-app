@@ -6,6 +6,8 @@ public enum CommandType {
     GET("get"),
     RECIPES("recipes"),
     RECIPE("recipe"),
+    TRAININGS("trainings"), //new
+    TRAINING("training"), //new
     DRINKS("drinks"),
     INGREDIENTS("ingredients"),
     ALLERGENS("allergens"),

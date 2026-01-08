@@ -32,7 +32,9 @@ public class CommandExecutor extends CommandExecutorValidator {
 
             return switch (commandType) {
                 case RECIPES -> new RecipeCommandExecutor(restaurant).execute(cmd.arguments());
+                case TRAININGS -> new RecipeCommandExecutor(restaurant).execute(cmd.arguments()); //new
                 case RECIPE -> new GetRecipeByNameCommand(restaurant, cmd.arguments()).execute();
+                case TRAINING -> new GetRecipeByNameCommand(restaurant, cmd.arguments()).execute(); //new
                 case DRINKS -> new DrinkCommandExecutor(restaurant).execute(cmd.arguments());
                 case INGREDIENTS -> new GetIngredientsByRecipeNameCommand(restaurant, cmd.arguments()).execute();
                 case ALLERGENS -> new GetAllergensByRecipeNameCommand(restaurant, cmd.arguments()).execute();
