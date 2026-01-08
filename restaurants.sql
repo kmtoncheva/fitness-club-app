@@ -18,30 +18,30 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restaurants`
+-- Database: `fitnes_club`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `allergens`
+-- Table structure for table `muscle_groups`
 --
 
-CREATE TABLE `allergens` (
+CREATE TABLE `muscle_groups` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `allergens`
+-- Dumping data for table `muscle_groups`
 --
 
-INSERT INTO `allergens` (`id`, `name`) VALUES
-(5, 'chocolate'),
-(4, 'eggs'),
-(3, 'gluten'),
-(6, 'peanuts'),
-(8, 'soy');
+INSERT INTO `muscle_groups` (`id`, `name`) VALUES
+(5, 'chest'),
+(4, 'legs'),
+(3, 'back'),
+(6, 'arms'),
+(8, 'shoulders');
 
 -- --------------------------------------------------------
 
@@ -49,17 +49,17 @@ INSERT INTO `allergens` (`id`, `name`) VALUES
 -- Table structure for table `allergens_for_recipe`
 --
 
-CREATE TABLE `allergens_for_recipe` (
+CREATE TABLE `muscle_groups_for_training` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `allergen_id` bigint(20) UNSIGNED NOT NULL,
-  `recipe_id` bigint(20) UNSIGNED NOT NULL
+  `muscle_group_id` bigint(20) UNSIGNED NOT NULL,
+  `training_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `allergens_for_recipe`
 --
 
-INSERT INTO `allergens_for_recipe` (`id`, `allergen_id`, `recipe_id`) VALUES
+INSERT INTO `muscle_groups_for_training` (`id`, `muscle_group_id`, `training_id`) VALUES
 (1, 5, 2),
 (2, 3, 2),
 (3, 4, 2),
@@ -78,18 +78,18 @@ INSERT INTO `allergens_for_recipe` (`id`, `allergen_id`, `recipe_id`) VALUES
 -- Table structure for table `drinks`
 --
 
-CREATE TABLE `drinks` (
+CREATE TABLE `equipment` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
-  `serve_style` varchar(50) NOT NULL
+  `difficulty` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `drinks`
 --
 
-INSERT INTO `drinks` (`id`, `name`, `type`, `serve_style`) VALUES
+INSERT INTO `equipment` (`id`, `name`, `type`, `difficulty`) VALUES
 (2, 'wine', 'alcohol', 'cold'),
 (3, 'water', 'non-alcoholic', 'cold'),
 (4, 'cappuccino', 'coffee', 'hot'),
@@ -102,17 +102,17 @@ INSERT INTO `drinks` (`id`, `name`, `type`, `serve_style`) VALUES
 -- Table structure for table `drinks_for_recipe`
 --
 
-CREATE TABLE `drinks_for_recipe` (
+CREATE TABLE `equipment_for_training` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `drink_id` bigint(20) UNSIGNED NOT NULL,
-  `recipe_id` bigint(20) UNSIGNED NOT NULL
+  `equipment_id` bigint(20) UNSIGNED NOT NULL,
+  `training_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `drinks_for_recipe`
 --
 
-INSERT INTO `drinks_for_recipe` (`id`, `drink_id`, `recipe_id`) VALUES
+INSERT INTO `equipment_for_training` (`id`, `equipment_id`, `training_id`) VALUES
 (1, 4, 1),
 (2, 3, 4),
 (3, 5, 1),
@@ -129,7 +129,7 @@ INSERT INTO `drinks_for_recipe` (`id`, `drink_id`, `recipe_id`) VALUES
 -- Table structure for table `ingredients`
 --
 
-CREATE TABLE `ingredients` (
+CREATE TABLE `exercises` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -138,7 +138,7 @@ CREATE TABLE `ingredients` (
 -- Dumping data for table `ingredients`
 --
 
-INSERT INTO `ingredients` (`id`, `name`) VALUES
+INSERT INTO `exercises` (`id`, `name`) VALUES
 (8, 'baking powder'),
 (6, 'chocolate chips'),
 (4, 'cream'),
@@ -153,17 +153,17 @@ INSERT INTO `ingredients` (`id`, `name`) VALUES
 -- Table structure for table `ingredients_for_recipe`
 --
 
-CREATE TABLE `ingredients_for_recipe` (
+CREATE TABLE `exercises_for_training` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `ingredient_id` bigint(20) UNSIGNED NOT NULL,
-  `recipe_id` bigint(20) UNSIGNED NOT NULL
+  `exercise_id` bigint(20) UNSIGNED NOT NULL,
+  `training_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `ingredients_for_recipe`
 --
 
-INSERT INTO `ingredients_for_recipe` (`id`, `ingredient_id`, `recipe_id`) VALUES
+INSERT INTO `exercises_for_training` (`id`, `exercise_id`, `training_id`) VALUES
 (1, 4, 1),
 (2, 2, 1),
 (3, 5, 1),
@@ -188,19 +188,19 @@ INSERT INTO `ingredients_for_recipe` (`id`, `ingredient_id`, `recipe_id`) VALUES
 -- Table structure for table `recipes`
 --
 
-CREATE TABLE `recipes` (
+CREATE TABLE `trainings` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
-  `serve_style` varchar(50) NOT NULL,
-  `preparation_time` bigint(20) NOT NULL
+  `difficulty` varchar(50) NOT NULL,
+  `duration` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `recipes`
 --
 
-INSERT INTO `recipes` (`id`, `name`, `type`, `serve_style`, `preparation_time`) VALUES
+INSERT INTO `trainings` (`id`, `name`, `type`, `difficulty`, `duration`) VALUES
 (1, 'cake', 'dessert', 'cold', 15),
 (2, 'cookies', 'breakfast', 'hot', 5),
 (3, 'pancakes', 'breakfast', 'hot', 10),
