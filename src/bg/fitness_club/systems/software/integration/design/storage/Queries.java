@@ -9,7 +9,7 @@ import java.util.Set;
 import bg.fitness_club.systems.software.integration.design.data.difficulty.Difficulty;
 import bg.fitness_club.systems.software.integration.design.data.equipment.Equipment;
 import bg.fitness_club.systems.software.integration.design.data.exercise.Exercise;
-import bg.fitness_club.systems.software.integration.design.data.muscleGroup.MusleGroup;
+import bg.fitness_club.systems.software.integration.design.data.muscleGroup.MuscleGroup;
 import bg.fitness_club.systems.software.integration.design.data.training.Training;
 import bg.fitness_club.systems.software.integration.design.data.training.TrainingType;
 
@@ -192,7 +192,7 @@ public class Queries {
         return equipment;
     }
 
-    public Set<MusleGroup> getMuscleGroupsByTrainingName(String trainingName) throws SQLException {
+    public Set<MuscleGroup> getMuscleGroupsByTrainingName(String trainingName) throws SQLException {
         ResultSet resultSet = databaseConnection.executeQuery("""             
                 SELECT * FROM muscles
                 WHERE id IN (
@@ -202,9 +202,9 @@ public class Queries {
                                 WHERE name = \"""" +
                 trainingName + "\"))");
 
-        Set<MusleGroup> muscles = new HashSet<>();
+        Set<MuscleGroup> muscles = new HashSet<>();
         while (resultSet.next()) {
-            muscles.add(new MusleGroup(resultSet.getString("name")));
+            muscles.add(new MuscleGroup(resultSet.getString("name")));
         }
 
         resultSet.close();

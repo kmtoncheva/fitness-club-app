@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public enum CommandType {
     GET("get"),
-    TRAININGS("trainings"), //new
-    TRAINING("training"), //new
+    TRAININGS("trainings"),
+    TRAINING("training"),
     EQUIPMENT("equipment"),
     EXERCISES("exercises"),
     MUSLE_GROUPS("muscle_groups"),
@@ -15,7 +15,7 @@ public enum CommandType {
     ALL("--all"),
     TYPE("--type"),
     LIST_EXERCISES("--exercises"),
-    TRAINING_NAME("--training_name"), //new
+    TRAINING_NAME("--training_name"),
     LIST_MUSCLE_GROUPS("--muscle_groups"),
     UNKNOWN("unknown");
 

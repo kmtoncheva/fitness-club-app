@@ -4,15 +4,6 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 public interface FitnessClubAPI {
-    // String getAllTrainings() throws SQLException;
-    // String getTrainingByName(String trainingName) throws SQLException;
-    // String getAllTrainingsByType(Collection<String> types) throws SQLException;
-    // String getAllTrainingsByMuscles(Collection<String> muscles) throws SQLException;
-    // String getAllTrainingsByDifficulty(Collection<String> difficulties) throws SQLException;
-    // String getExercisesByTrainingName(String trainingName) throws SQLException;
-    // String getDurationByTrainingName(String trainingName) throws SQLException;
-    // String getDifficultyByTrainingName(String trainingName) throws SQLException;
-
     String getMusleGroupsByTrainingName(String trainingName) throws SQLException;
 
     String getTrainingByName(String trainingName) throws SQLException;

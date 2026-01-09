@@ -2,13 +2,13 @@ package bg.fitness_club.systems.software.integration.design.data.training;
 
 import bg.fitness_club.systems.software.integration.design.data.equipment.Equipment;
 import bg.fitness_club.systems.software.integration.design.data.exercise.Exercise;
-import bg.fitness_club.systems.software.integration.design.data.muscleGroup.MusleGroup;
+import bg.fitness_club.systems.software.integration.design.data.muscleGroup.MuscleGroup;
 
 import java.util.Set;
 
 public record Training(String name, String type, String difficulty,
                      Set<Exercise> exercises, int duration,
-                     Set<MusleGroup> muscleGroup, Set<Equipment> equipment) {
+                     Set<MuscleGroup> muscleGroup, Set<Equipment> equipment) {
 
     public Training {
         if (name == null || name.isEmpty() || name.isBlank()) {

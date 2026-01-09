@@ -18,46 +18,6 @@ public class FitnessClub extends FitnessClubValidator implements FitnessClubAPI 
         this.gson = gson;
     }
 
-    // @Override //new
-    // public String getAllTrainings() throws SQLException {
-    //     return getAllRecipes();
-    // }
-
-    // @Override //new
-    // public String getTrainingByName(String trainingName) throws SQLException {
-    //     return getRecipeByName(trainingName);
-    // }
-
-    // @Override //new
-    // public String getExercisesByTrainingName(String trainingName) throws SQLException {
-    //     return getIngredientsByRecipeName(trainingName);
-    // }
-
-    // @Override //new
-    // public String getDurationByTrainingName(String trainingName) throws SQLException {
-    //     return getPreparationTimeForRecipeByName(trainingName);
-    // }
-
-    // @Override //new
-    // public String getDifficultyByTrainingName(String trainingName) throws SQLException {
-    //     return getServingWayByRecipeName(trainingName);
-    // }
-
-    // @Override //new
-    // public String getAllTrainingsByType(Collection<String> types) throws SQLException {
-    //     return getAllRecipesByType(types);
-    // }
-
-    // @Override //new
-    // public String getAllTrainingsByMuscles(Collection<String> muscles) throws SQLException{
-    //     return getAllRecipesByAllergens(muscles);
-    // }
-
-    // @Override //new
-    // public String getAllTrainingsByDifficulty(Collection<String> difficulties) throws SQLException{
-    //     return getAllRecipesByIngredients(difficulties);
-    // }
-
     @Override
     public String getTrainingByName(String trainingName) throws SQLException {
         var result = queries.getTrainingsByName(trainingName);

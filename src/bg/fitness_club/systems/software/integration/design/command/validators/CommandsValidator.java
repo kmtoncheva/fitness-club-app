@@ -3,8 +3,6 @@ package bg.fitness_club.systems.software.integration.design.command.validators;
 import bg.fitness_club.systems.software.integration.design.command.CommandType;
 
 public abstract class CommandsValidator {
-    private static final int MUST_HAVE_ONE_ARG = 1;
-
     protected void validateArgumentsLength(String[] args) {
         if (args.length == 0) {
             throw new IllegalArgumentException("The number of arguments must be at least one!");

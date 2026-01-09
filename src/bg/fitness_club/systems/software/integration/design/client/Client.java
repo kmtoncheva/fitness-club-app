@@ -24,7 +24,7 @@ public class Client {
     private static final String WHITESPACE_REGEX = "\\s+";
     private static final String SPACE_REGEX = " ";
 
-    private static void printRestaurantInfo() {
+    private static void printFitnessInfo() {
         System.out.println("""
 
             Welcome to the Fitness Club!
@@ -122,7 +122,7 @@ public class Client {
             socketChannel.connect(new InetSocketAddress(SERVER_HOST, SERVER_PORT));
 
             System.out.println("Connected to the server.");
-            printRestaurantInfo();
+            printFitnessInfo();
 
             while (true) {
                 System.out.print("Enter message: ");

@@ -16,7 +16,7 @@ public record Equipment(String name, String type, String difficulty) {
         }
 
         if (difficulty == null) {
-            throw new IllegalArgumentException("The serveStyle cannot be null!");
+            throw new IllegalArgumentException("The difficulty cannot be null!");
         }
     }
 

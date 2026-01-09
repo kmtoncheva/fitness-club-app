@@ -26,7 +26,7 @@ public class GetDifficultyByTrainingNameCommand extends CommandsValidator implem
             return "Unknown Command";
         }
 
-        String recipeName = args[1];
-        return fitnessClub.getDifficultyByTrainingName(recipeName);
+        String trainingName = args[1];
+        return fitnessClub.getDifficultyByTrainingName(trainingName);
     }
 }

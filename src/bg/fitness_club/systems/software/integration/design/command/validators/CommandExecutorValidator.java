@@ -10,9 +10,9 @@ public abstract class CommandExecutorValidator {
         }
     }
 
-    protected void validateConstructorParameter(FitnessClubAPI restaurant) {
-        if (restaurant == null) {
-            throw new IllegalArgumentException("The restaurant cannot be null!");
+    protected void validateConstructorParameter(FitnessClubAPI fitness) {
+        if (fitness == null) {
+            throw new IllegalArgumentException("The fitness cannot be null!");
         }
     }
 
