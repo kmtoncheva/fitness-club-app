@@ -151,7 +151,7 @@ Stores equipment information with difficulty ratings.
 **Location:** `src/bg/fitness_club/systems/software/integration/design/client/Client.java`
 
 **Responsibilities:**
-- Establishes connection to the server (localhost:7777)
+- Establishes connection to the server (localhost:8080)
 - Sends user commands to the server
 - Receives and displays responses
 - Handles file output for command results
@@ -164,7 +164,7 @@ Stores equipment information with difficulty ratings.
 **Connection Details:**
 ```java
 SERVER_HOST = "localhost"
-SERVER_PORT = 7777
+SERVER_PORT = 8080
 ```
 
 ### 2. Server (`Server.java`)
@@ -188,9 +188,9 @@ SERVER_PORT = 7777
 - `read(SelectionKey key)` - Reads client commands
 - `write(SelectionKey key)` - Sends responses to clients
 
-### 3. Admin Panel (`AdminPanel.java`)
+### 3. Server Launcher (`ServerLauncher.java`)
 
-**Location:** `src/bg/fitness_club/systems/software/integration/design/server/AdminPanel.java`
+**Location:** `src/bg/fitness_club/systems/software/integration/design/server/ServerLauncher.java`
 
 **Responsibilities:**
 - Initializes server components
@@ -235,7 +235,7 @@ String getMusleGroupsByTrainingName(String trainingName) throws SQLException
 
 ### 5. Database Layer (`Queries.java`)
 
-**Location:** `src/bg/fitness_club/systems/software/integration/design/storage/Queries.java`
+**Location:** `src/bg/fitness_club/systems/software/integration/design/database/Queries.java`
 
 **Responsibilities:**
 - Executes SQL queries
@@ -669,7 +669,7 @@ get trainings to file "C:\output\trainings.txt"
 
 ### Test Suite Overview
 
-The project includes **51+ comprehensive unit tests** covering all major components.
+The project includes **98 unit tests** covering all major components.
 
 **Test Location:** `test/bg/fitness_club/systems/software/integration/design/`
 
@@ -781,7 +781,7 @@ fitness-club-app/
 │       ├── fitness_club/
 │       │   ├── FitnessClubAPI.java
 │       │   └── FitnessClub.java
-│       ├── command/
+│       ├── commands/
 │       │   ├── Command.java
 │       │   ├── CommandCreator.java
 │       │   ├── CommandExecutor.java
@@ -794,13 +794,13 @@ fitness-club-app/
 │       │   │   ├── difficulty/
 │       │   │   └── duration/
 │       │   └── validators/
-│       ├── data/
+│       ├── model/
 │       │   ├── training/
 │       │   ├── equipment/
 │       │   ├── exercise/
 │       │   ├── muscleGroup/
 │       │   └── difficulty/
-│       ├── storage/
+│       ├── database/
 │       │   ├── DatabaseConnection.java
 │       │   └── Queries.java
 │       └── logger/
@@ -925,16 +925,16 @@ sudo systemctl start mysql
 mysql -u root -p < fitness_club.sql
 ```
 
-#### 3. "Port 7777 already in use"
+#### 3. "Port 8080 already in use"
 **Cause:** Server already running or port occupied  
 **Solution:**
 ```bash
 # Windows
-netstat -ano | findstr :7777
+netstat -ano | findstr :8080
 taskkill /PID <PID> /F
 
 # Linux/Mac
-lsof -i :7777
+lsof -i :8080
 kill -9 <PID>
 ```
 
