@@ -1,7 +1,7 @@
 package bg.fitness_club.systems.software.integration.design.server;
 
-import bg.fitness_club.systems.software.integration.design.command.CommandCreator;
-import bg.fitness_club.systems.software.integration.design.command.CommandExecutor;
+import bg.fitness_club.systems.software.integration.design.commands.CommandCreator;
+import bg.fitness_club.systems.software.integration.design.commands.CommandExecutor;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -14,9 +14,11 @@ import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
+import static bg.fitness_club.systems.software.integration.design.server.ServerConstants.BUFFER_SIZE;
+import static bg.fitness_club.systems.software.integration.design.server.ServerConstants.HOST;
+
 public class Server extends Thread {
-    private static final int BUFFER_SIZE = 16384;
-    private static final String HOST = "localhost";
+
     private final CommandExecutor commandExecutor;
     private final int port;
     private boolean isServerWorking;

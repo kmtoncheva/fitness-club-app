@@ -1,6 +1,6 @@
 package bg.fitness_club.systems.software.integration.design.fitness_club;
 
-import bg.fitness_club.systems.software.integration.design.data.training.Training;
+import bg.fitness_club.systems.software.integration.design.model.training.Training;
 import bg.fitness_club.systems.software.integration.design.exceptions.TrainingAlreadyExistsException;
 
 import java.util.Set;

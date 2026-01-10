@@ -544,7 +544,7 @@ HARD("hard")
 #### Start Server (Admin Panel)
 
 ```bash
-java -cp "bin;lib/*" bg.fitness_club.systems.software.integration.design.server.AdminPanel
+java -cp "bin;lib/*" bg.fitness_club.systems.software.integration.design.server.ServerLaunchercher
 ```
 
 **Admin Commands:**
@@ -713,7 +713,7 @@ java -cp "lib/*;bin;test" org.junit.platform.console.ConsoleLauncher --scan-clas
 
 #### Run Specific Test Class
 ```bash
-java -cp "lib/*;bin;test" org.junit.platform.console.ConsoleLauncher --select-class bg.fitness_club.systems.software.integration.design.data.training.TrainingTest
+java -cp "lib/*;bin;test" org.junit.platform.console.ConsoleLauncher --select-class bg.fitness_club.systems.software.integration.design.model.training.TrainingTest
 ```
 
 ### Test Coverage

@@ -1,11 +1,11 @@
 package bg.fitness_club.systems.software.integration.design.fitness_club;
 
-import bg.fitness_club.systems.software.integration.design.data.difficulty.Difficulty;
-import bg.fitness_club.systems.software.integration.design.data.equipment.Equipment;
-import bg.fitness_club.systems.software.integration.design.data.exercise.Exercise;
-import bg.fitness_club.systems.software.integration.design.data.muscleGroup.MuscleGroup;
-import bg.fitness_club.systems.software.integration.design.data.training.Training;
-import bg.fitness_club.systems.software.integration.design.storage.Queries;
+import bg.fitness_club.systems.software.integration.design.model.difficulty.Difficulty;
+import bg.fitness_club.systems.software.integration.design.model.equipment.Equipment;
+import bg.fitness_club.systems.software.integration.design.model.exercise.Exercise;
+import bg.fitness_club.systems.software.integration.design.model.muscleGroup.MuscleGroup;
+import bg.fitness_club.systems.software.integration.design.model.training.Training;
+import bg.fitness_club.systems.software.integration.design.database.Queries;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
