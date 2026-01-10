@@ -60,6 +60,7 @@ public class ServerLauncher {
                     System.out.println(SERVER_STOPPING_MESSAGE);
                     server.shutdown();
                 }
+                System.out.println(SERVER_STOPPED_MESSAGE);
                 break;
             }
         }

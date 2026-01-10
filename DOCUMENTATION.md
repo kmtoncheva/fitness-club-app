@@ -34,13 +34,13 @@ The system implements a **three-tier architecture**:
 ```
 ┌─────────────────┐
 │     Client      │  ← User Interface Layer
-│   (Java NIO)    │
+│   (Java NIO)    │  (Enhanced with colors & emojis)
 └────────┬────────┘
-         │ TCP/IP (Port 7777)
+         │ TCP/IP (Port 8080)
          │
 ┌────────▼────────┐
 │     Server      │  ← Business Logic Layer
-│  (Admin Panel)  │
+│ (ServerLauncher)│  (Colorful admin console)
 └────────┬────────┘
          │ JDBC
          │
@@ -57,6 +57,8 @@ The system implements a **three-tier architecture**:
 - **Gson:** JSON serialization/deserialization for data transfer
 - **Command Pattern:** Structured command processing and execution
 - **MySQL:** Relational database for persistent storage
+- **ANSI Color Codes:** Terminal styling for enhanced user experience
+- **Unicode Characters:** Box-drawing characters and emojis for modern UI
 
 ---
 
@@ -153,19 +155,28 @@ Stores equipment information with difficulty ratings.
 **Responsibilities:**
 - Establishes connection to the server (localhost:8080)
 - Sends user commands to the server
-- Receives and displays responses
+- Receives and displays colorful, emoji-rich responses
 - Handles file output for command results
+- Provides interactive user experience with visual feedback
 
 **Key Methods:**
 - `main(String[] args)` - Entry point, manages connection lifecycle
-- `printFitnessInfo()` - Displays available commands to user
+- `printFitnessInfo()` - Displays beautiful menu with colors and emojis
 - `getStrings(String input, List<String> tokens)` - Parses command input
+- `createFile(String reply, List<String> messageParts)` - Exports data to files
 
 **Connection Details:**
 ```java
 SERVER_HOST = "localhost"
 SERVER_PORT = 8080
 ```
+
+**UI Features:**
+- 💪 Colorful welcome banner with Unicode box borders
+- 🎨 Color-coded sections (Green, Blue, Yellow, Magenta, Cyan)
+- 📨 Formatted response boxes with separators
+- 👋 Friendly goodbye messages on disconnect
+- ✅ Success/warning/error indicators with emojis
 
 ### 2. Server (`Server.java`)
 
@@ -194,19 +205,29 @@ SERVER_PORT = 8080
 
 **Responsibilities:**
 - Initializes server components
-- Manages server lifecycle (start/stop)
+- Manages server lifecycle (start/stop) with colorful UI
 - Configures database connection
 - Sets up error logging
+- Provides admin console with emoji-rich interface
 
 **Initialization Sequence:**
 ```java
-1. ErrorLogger initialization
-2. DatabaseConnection setup
-3. Queries object creation
-4. Gson configuration
-5. FitnessClub API instantiation
-6. Server thread startup
+1. Log file creation with success indicator (✅)
+2. ErrorLogger initialization
+3. DatabaseConnection setup
+4. Queries object creation
+5. Gson configuration with pretty printing
+6. FitnessClub API instantiation
+7. Server thread startup
+8. Colorful admin console display (🖥️)
 ```
+
+**Admin Console Features:**
+- 🖥️ Professional header with Unicode borders
+- 🟢 Color-coded commands (green for start, red for stop)
+- 💡 Helpful tips about port configuration
+- 🚀 Animated status messages
+- ✅ Graceful shutdown messages
 
 ### 4. FitnessClub API (`FitnessClub.java`)
 
@@ -478,6 +499,7 @@ HARD("hard")
 
 - **Java Development Kit (JDK):** Version 17 or higher
 - **MySQL Server:** Version 5.7 or higher
+- **Terminal with ANSI support:** For color display (Windows Terminal, PowerShell, or modern terminals)
 - **IDE:** IntelliJ IDEA, Eclipse, or VS Code (optional)
 
 ### Database Setup
@@ -541,20 +563,48 @@ HARD("hard")
 
 ### Running the Application
 
-#### Start Server (Admin Panel)
+#### Start Server (ServerLauncher)
 
 ```bash
-java -cp "bin;lib/*" bg.fitness_club.systems.software.integration.design.server.ServerLaunchercher
+java -cp "bin;lib/*" bg.fitness_club.systems.software.integration.design.server.ServerLauncher
 ```
 
 **Admin Commands:**
-- `start` - Start the server
-- `stop` - Stop the server
+- 🟢 `start` - Start the Fitness Club server
+- 🔴 `stop` - Stop the server and exit
+
+**Expected Output:**
+```
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   🖥️  FITNESS CLUB SERVER  🖥️                             ║
+║                    Server Management Console                               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📋 Available Commands:
+  🟢 start - Start the Fitness Club server
+  🔴 stop  - Stop the server and exit
+
+💡 Tip: Server will listen on port 8080 after starting
+```
 
 #### Start Client
 
 ```bash
 java -cp "bin;lib/*" bg.fitness_club.systems.software.integration.design.client.Client
+```
+
+**Expected Output:**
+```
+✅ Connected to Fitness Club Server!
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    💪 WELCOME TO FITNESS CLUB 2.0 💪                       ║
+║                     Your Personal Training Assistant                       ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📝 NOTE: Use quotes (" ") around values for proper command execution!
+
+[Colorful menu sections with emojis...]
 ```
 
 ---
@@ -764,6 +814,8 @@ Stack trace:
 - `"No result!"` - Query returned empty set
 - `"There was an error in the application, please try again!"` - General error
 - `"The [field] cannot be null!"` - Validation error
+- 🔌 `"Network communication error!"` - Connection issues
+- ❌ `"Cannot create file - incorrect command format!"` - File export error
 
 ---
 
@@ -774,10 +826,12 @@ fitness-club-app/
 ├── src/
 │   └── bg/fitness_club/systems/software/integration/design/
 │       ├── client/
-│       │   └── Client.java
+│       │   ├── Client.java
+│       │   └── ClientConstants.java
 │       ├── server/
 │       │   ├── Server.java
-│       │   └── AdminPanel.java
+│       │   ├── ServerLauncher.java
+│       │   └── ServerConstants.java
 │       ├── fitness_club/
 │       │   ├── FitnessClubAPI.java
 │       │   └── FitnessClub.java
@@ -818,7 +872,9 @@ fitness-club-app/
 │   └── mockito-core-4.9.0.jar
 ├── fitness_club.sql
 ├── README.md
-└── DOCUMENTATION.md
+├── DOCUMENTATION.md
+├── COMMAND_EXAMPLES.md
+└── FILE_EXPORT_FEATURE.md
 ```
 
 ---
@@ -876,6 +932,7 @@ Different command handlers implement different execution strategies.
 ### Network Security
 - ⚠️ **Current:** No encryption (localhost only)
 - ✅ **Production:** Implement SSL/TLS for client-server communication
+- ✅ **Port Configuration:** Changed from default 7777 to 8080
 
 ### Input Validation
 - ✅ All user inputs validated before processing
@@ -893,6 +950,8 @@ Different command handlers implement different execution strategies.
 4. **Nutrition Integration:** Meal plans and calorie tracking
 5. **Web Interface:** REST API and web frontend
 6. **Mobile App:** iOS/Android clients
+7. **Enhanced Filtering:** More complex query combinations
+8. **Export Formats:** CSV, XML, PDF export options
 
 ### Technical Improvements
 1. **Connection Pooling:** HikariCP for better performance
@@ -900,6 +959,8 @@ Different command handlers implement different execution strategies.
 3. **Logging Framework:** Log4j2 for structured logging
 4. **Configuration Management:** External config files
 5. **Containerization:** Docker deployment
+6. **UI Themes:** Customizable color schemes
+7. **Internationalization:** Multi-language support
 
 ---
 

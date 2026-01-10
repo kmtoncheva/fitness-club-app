@@ -102,6 +102,8 @@ public class Client {
                 String message = scanner.nextLine();
 
                 if (DISCONNECT_COMMAND.equals(message)) {
+                    System.out.println(DISCONNECTING_MESSAGE);
+                    System.out.println(GOODBYE_MESSAGE);
                     break;
                 }
 
@@ -127,7 +129,7 @@ public class Client {
                 String reply = new String(byteArray, CHARSET);
 
                 if (messageParts == null) {
-                    System.out.println(RESPONSE_PREFIX + reply + "\n");
+                    System.out.println(RESPONSE_PREFIX + reply + RESPONSE_SUFFIX);
                 }
 
                 createFile(reply, messageParts);

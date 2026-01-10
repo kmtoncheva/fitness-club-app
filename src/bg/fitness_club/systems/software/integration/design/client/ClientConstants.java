@@ -8,6 +8,16 @@ public final class ClientConstants {
     private ClientConstants() {
     }
 
+    // ANSI Color Codes for terminal styling
+    public static final String RESET = "\u001B[0m";
+    public static final String BOLD = "\u001B[1m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String CYAN = "\u001B[36m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String MAGENTA = "\u001B[35m";
+    public static final String RED = "\u001B[31m";
+
     // Server connection
     public static final String SERVER_HOST = "localhost";
     public static final int SERVER_PORT = 8080;
@@ -27,65 +37,102 @@ public final class ClientConstants {
     public static final String TRAINING_COMMAND_PREFIX =
         "get training --training_name ";
 
-    // Input / Output
-    public static final String ENTER_MESSAGE_PROMPT = "Enter message: ";
-    public static final String CONNECTED_MESSAGE = "Connected to the server.";
+    // Input / Output with enhanced UI
+    public static final String ENTER_MESSAGE_PROMPT = CYAN + "💬 Enter command" + RESET + " ➤ ";
+    public static final String CONNECTED_MESSAGE = GREEN + "✅ Connected to Fitness Club Server!" + RESET;
 
-    public static final String RESPONSE_PREFIX =
-        "The Fitness Club's response is:\n";
+    public static final String RESPONSE_PREFIX = BOLD + BLUE + "\n📨 Server Response:\n" + RESET + 
+                                                  CYAN + "─".repeat(80) + "\n" + RESET;
+    public static final String RESPONSE_SUFFIX = CYAN + "\n" + "─".repeat(80) + "\n" + RESET;
 
-    // File messages
+    // File messages with emojis
     public static final String FILE_CREATED_MESSAGE =
-        "The file created at ";
+        GREEN + "✅ File successfully created at: " + RESET;
 
     public static final String FILE_OVERWRITTEN_MESSAGE =
-        "The file was overwritten!";
+        YELLOW + "⚠️  File was overwritten!" + RESET;
 
     public static final String FILE_COMMAND_ERROR_MESSAGE =
-        """
-        Cannot create file because command is incorrect!
-        The command looks like this: get file --training_name "..." --path "..."
-        """;
+        RED + """
+        ❌ Cannot create file - incorrect command format!
+        💡 Correct format: get file --training_name "..." --path "..."
+        """ + RESET;
 
-    // Errors
+    // Errors with emojis
     public static final String NETWORK_ERROR_MESSAGE =
-        "There is a problem with the network communication";
+        RED + "🔌 Network communication error!" + RESET;
+    public static final String DISCONNECTING_MESSAGE =
+        YELLOW + "\n👋 Disconnecting from Fitness Club..." + RESET;
+    public static final String GOODBYE_MESSAGE =
+        GREEN + "🎉 Thanks for using Fitness Club! Stay healthy! 💪\n" + RESET;
 
-    // UI / Menu
-    public static final String FITNESS_MENU = """
-
-            Welcome to the Fitness Club!
-            Please note that for each command quotes(" ") are necessary to execute properly!
-            Here is the menu:
-            ------------------------------------------Trainings------------------------------------------
-            Get all trainings -> get trainings --all
-            Get training by name -> get training --training_name "..."
-            Get trainings by type -> get trainings --type ["CARDIO", "STRENGTH", ...]
-            Get trainings with certain exercise -> get trainings --exercises ["push-ups", "deadlift", ...]
-            Get trainings with certain muscle groups -> get trainings --muscle_groups ["milk", "gluten", ...]
-
-            ------------------------------------------Equipment------------------------------------------
-            Get all equipment -> get equipment --all
-            Get suitable equipment for training -> get equipment --training_name "..."
-
-            ------------------------------------------Files------------------------------------------
-            Get file with certain training -> get file --training_name "..." --path "..."
-
-            ------------------------------------------Muscle Group------------------------------------------
-            Get muscle groups for certain training -> get muscle_groups --training_name "..."
-
-            ------------------------------------------Exercise------------------------------------------
-            Get all exercises for training -> get exercises --training_name "..."
-
-            ------------------------------------------Duration------------------------------------------
-            Get duration for certain training -> get duration --training_name "..."
-
-            ------------------------------------------Difficulty------------------------------------------
-            Get difficulty for training -> get difficulty --training_name "..."
-            ----------------------------------------------------------------------------------------
-
-            To disconnect from the Fitness Club please enter (disconnect).
-            Enjoy your training!
-            """;
+    // UI / Menu with colors and emojis
+    public static final String FITNESS_MENU = BOLD + MAGENTA + """
+        
+        ╔════════════════════════════════════════════════════════════════════════════╗
+        ║                    💪 WELCOME TO FITNESS CLUB 2.0 💪                       ║
+        ║                     Your Personal Training Assistant                       ║
+        ╚════════════════════════════════════════════════════════════════════════════╝
+        """ + RESET + CYAN + """
+        
+        📝 NOTE: Use quotes (" ") around values for proper command execution!
+        """ + RESET + """
+        
+        """ + BOLD + GREEN + """
+        ┌─────────────────────────────────────────────────────────────────────────┐
+        │ 🏋️  TRAINING PROGRAMS                                                    │
+        └─────────────────────────────────────────────────────────────────────────┘
+        """ + RESET + """
+          📋 View all trainings          → get trainings --all
+          🎯 Find training by name       → get training --training_name "..."
+          🏃 Filter by type              → get trainings --type ["CARDIO", "STRENGTH", ...]
+          💪 Filter by exercises         → get trainings --exercises ["push-ups", "deadlift", ...]
+          🎯 Filter by muscle groups     → get trainings --muscle_groups ["chest", "legs", ...]
+        
+        """ + BOLD + BLUE + """
+        ┌─────────────────────────────────────────────────────────────────────────┐
+        │ 🏋️‍♀️ EQUIPMENT & GEAR                                                      │
+        └─────────────────────────────────────────────────────────────────────────┘
+        """ + RESET + """
+          📦 View all equipment          → get equipment --all
+          🔧 Equipment for training      → get equipment --training_name "..."
+        
+        """ + BOLD + YELLOW + """
+        ┌─────────────────────────────────────────────────────────────────────────┐
+        │ 💾 FILE OPERATIONS                                                       │
+        └─────────────────────────────────────────────────────────────────────────┘
+        """ + RESET + """
+          📄 Export training to file     → get file --training_name "..." --path "..."
+        
+        """ + BOLD + MAGENTA + """
+        ┌─────────────────────────────────────────────────────────────────────────┐
+        │ 🎯 MUSCLE GROUPS                                                         │
+        └─────────────────────────────────────────────────────────────────────────┘
+        """ + RESET + """
+          💪 Muscles for training        → get muscle_groups --training_name "..."
+        
+        """ + BOLD + CYAN + """
+        ┌─────────────────────────────────────────────────────────────────────────┐
+        │ 🏃‍♂️ EXERCISES                                                             │
+        └─────────────────────────────────────────────────────────────────────────┘
+        """ + RESET + """
+          🤸 Exercises in training       → get exercises --training_name "..."
+        
+        """ + BOLD + GREEN + """
+        ┌─────────────────────────────────────────────────────────────────────────┐
+        │ ⏱️  TRAINING DETAILS                                                     │
+        └─────────────────────────────────────────────────────────────────────────┘
+        """ + RESET + """
+          ⏰ Get training duration       → get duration --training_name "..."
+          📊 Get difficulty level        → get difficulty --training_name "..."
+        
+        """ + BOLD + MAGENTA + """
+        ╔════════════════════════════════════════════════════════════════════════════╗
+        ║  🚪 Type 'disconnect' to exit  |  💡 Tip: Start with 'get trainings --all' ║
+        ╚════════════════════════════════════════════════════════════════════════════╝
+        """ + RESET + GREEN + """
+        
+        🎉 Ready to start your fitness journey!
+        """ + RESET;
 }
 
