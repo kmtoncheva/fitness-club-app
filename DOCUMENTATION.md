@@ -64,7 +64,7 @@ The system implements a **three-tier architecture**:
 
 ### Entity-Relationship Diagram
 
-The database consists of 6 main tables with the following relationships:
+The database consists of 7 main tables with the following relationships:
 
 ```
 trainings (1) ──< (N) exercises_for_training (N) >── (1) exercises
